@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Train Finder</string>
+    <string name="startingplace_text">Enter starting place</string>
+    <string name="destinationplace_text">Enter destination place</string>
+    <string name="search_text">Search</string>
+    <string name="title_text">TRAIN FINDER</string>
+</resources>
