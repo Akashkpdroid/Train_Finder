@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:elevation="3dp"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/tr_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Train Name :" />
+
+        <TextView
+            android:id="@+id/arr_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="26dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Arrival time" />
+
+        <TextView
+            android:id="@+id/trv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/tr_name"
+            android:layout_marginBottom="11dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Travel Time" />
+
+        <TextView
+            android:id="@+id/dept_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tr_name"
+            android:layout_alignTop="@+id/arr_time"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Departure Time" />
+
+        <TextView
+            android:id="@+id/trn_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/arr_time"
+            android:layout_alignTop="@+id/trv_time"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Train Number" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
