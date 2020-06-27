@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="14dp"
             android:layout_marginTop="14dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="monospace"
             android:text="Train Name :" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="26dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="sans-serif"
             android:text="Arrival time" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/tr_name"
             android:layout_marginBottom="11dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="sans-serif"
             android:text="Travel Time" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/tr_name"
             android:layout_alignTop="@+id/arr_time"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="sans-serif"
             android:text="Departure Time" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/arr_time"
             android:layout_alignTop="@+id/trv_time"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="sans-serif"
             android:text="Train Number" />
     </RelativeLayout>
 
