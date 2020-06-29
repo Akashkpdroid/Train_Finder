@@ -42,7 +42,7 @@ public class TrainDataModel {
         }
         catch (JSONException e)
         {
-            //e.printStackTrace();
+            e.printStackTrace();
             return null;
         }
 

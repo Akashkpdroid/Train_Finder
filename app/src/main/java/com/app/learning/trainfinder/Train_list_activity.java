@@ -59,7 +59,6 @@ public class Train_list_activity extends AppCompatActivity {
         URL+=Code1+"/To/"+Code2;
         try {
             letsDoSomeNetworking();
-            Log.d("Train_Finer","Hi_After");
 
         }
         catch (Exception e)
@@ -68,7 +67,7 @@ public class Train_list_activity extends AppCompatActivity {
         }
 
     }
-    private void letsDoSomeNetworking() throws Exception {
+    private void letsDoSomeNetworking() {
 
 
         try {
