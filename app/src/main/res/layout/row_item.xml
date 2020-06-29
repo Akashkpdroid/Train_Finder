@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,56 +12,97 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="104dp"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/tr_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="210dp"
+            android:layout_height="32dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:fontFamily="monospace"
-            android:text="Train Name :" />
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="POORVA EXPRESS"
+            android:textColor="#3DBE6C"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeTextType="uniform"
+            tools:ignore="MissingPrefix" />
 
         <TextView
             android:id="@+id/arr_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="26dp"
-            android:fontFamily="sans-serif"
-            android:text="Arrival time" />
+            android:layout_alignTop="@+id/trv_time"
+            android:layout_marginEnd="45dp"
+            android:fontFamily="@font/nunito_sans"
+            android:text="06:05" />
 
         <TextView
             android:id="@+id/trv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/tr_name"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
-            android:fontFamily="sans-serif"
-            android:text="Travel Time" />
+            android:fontFamily="@font/nunito_sans"
+            android:text="22:20H" />
 
         <TextView
             android:id="@+id/dept_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tr_name"
+            android:layout_alignStart="@+id/textView2"
             android:layout_alignTop="@+id/arr_time"
-            android:fontFamily="sans-serif"
-            android:text="Departure Time" />
+            android:fontFamily="@font/nunito_sans"
+            android:text="07:45" />
 
         <TextView
             android:id="@+id/trn_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/arr_time"
-            android:layout_alignTop="@+id/trv_time"
-            android:fontFamily="sans-serif"
-            android:text="Train Number" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/tr_name"
+            android:layout_marginEnd="22dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/lato"
+            android:text="#02303"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/arr_time"
+            android:layout_alignParentStart="false"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="45dp"
+            android:text="HWH"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/arr_time"
+            android:layout_alignStart="@+id/arr_time"
+            android:layout_marginBottom="5dp"
+            android:text="NDLS"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="114dp"
+            android:layout_height="4dp"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/line" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

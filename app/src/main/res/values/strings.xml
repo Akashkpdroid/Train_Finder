@@ -5,4 +5,5 @@
     <string name="search_text">Search</string>
     <string name="title_text">TRAIN FINDER</string>
     <string name="list_train">LIST OF TRAINS : </string>
+    <string name="Load">Loading Train List...</string>
 </resources>

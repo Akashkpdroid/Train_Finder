@@ -19,6 +19,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ExampleViewHol
         public TextView mArrival_Time;
         public TextView mDeparture_Time;
         public TextView mTravelTime;
+        public TextView mTextView1;
+        public TextView mTextView2;
 
         public ExampleViewHolder(View itemView)
         {
@@ -28,6 +30,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ExampleViewHol
             mArrival_Time=itemView.findViewById(R.id.arr_time);
             mDeparture_Time=itemView.findViewById(R.id.dept_time);
             mTravelTime=itemView.findViewById(R.id.trv_time);
+            mTextView1=itemView.findViewById(R.id.textView2);
+            mTextView2=itemView.findViewById(R.id.textView3);
         }
 
     }
@@ -52,6 +56,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ExampleViewHol
         holder.mArrival_Time.setText(currenItem.getArrival_Time());
         holder.mTrain_Name.setText(currenItem.getTrain_Name());
         holder.mTrain_Numer.setText(currenItem.getTrain_Number());
+        holder.mTextView1.setText(currenItem.getCode1());
+        holder.mTextView2.setText(currenItem.getCode2());
     }
 
     @Override

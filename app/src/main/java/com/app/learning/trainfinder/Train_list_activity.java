@@ -1,12 +1,25 @@
 package com.app.learning.trainfinder;
 
+import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -18,7 +31,11 @@ public class Train_list_activity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList<Row_item> RowList;
+    private TextView mTextView;
 
+    String URL="https://indianrailapi.com/api/v2/TrainBetweenStation/apikey/317f3d1fa71471530d198fd12f9009bd/From/";
+    private String Code1,Code2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,21 +48,77 @@ public class Train_list_activity extends AppCompatActivity {
             }
         });
 
-        ArrayList<Row_item> RowList=new ArrayList<>();
-        RowList.add(new Row_item("Train Number: 02303","Train Name: Poorva Express","Arrival Time: 06:05","Departure Time: 07:45","Travel Time: 22:20H"));
-        RowList.add(new Row_item("Train Number: 02381","Train Name: Poorva Express","Arrival Time: 06:05","Departure Time: 08:00","Travel Time: 22:05H"));
-        RowList.add(new Row_item("Train Number: 02385","Train Name: Chennai Express","Arrival Time: 16:05","Departure Time: 08:00","Travel Time: 32:05H"));
-        RowList.add(new Row_item("Train Number: 02395","Train Name: Mumbai Mail","Arrival Time: 16:45","Departure Time: 08:00","Travel Time: 31:25H"));
-        RowList.add(new Row_item("Train Number: 02301","Train Name: HWH NDLS AC SPL","Arrival Time: 10:00","Departure Time: 16:45","Travel Time: 17:15H"));
+        mTextView=(TextView) findViewById(R.id.textView);
 
-        mRecyclerView=findViewById(R.id.RecyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager=new LinearLayoutManager(this);
-        mAdapter=new ItemAdapter(RowList);
+        Intent intnt=getIntent();
+        Code1=intnt.getStringExtra("CODE_1");
+        Code2=intnt.getStringExtra("CODE_2");
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        RowList=new ArrayList<>();
 
+        URL+=Code1+"/To/"+Code2;
+        try {
+            letsDoSomeNetworking();
+            Log.d("Train_Finer","Hi_After");
+
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(Train_list_activity.this,"Request Failed",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private void letsDoSomeNetworking() throws Exception {
+
+
+        try {
+            HttpsTrustManager.allowAllSSL();
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+            JsonObjectRequest objectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    URL,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("Train_Finder", "SUCCESS! JSON: " + response.toString());
+                            TrainDataModel trainData = TrainDataModel.fromJSON(response);
+                            if(trainData==null) {
+                                openpage1();
+                                Toast.makeText(Train_list_activity.this,"No Currently Available Trains",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                int len = Integer.parseInt(trainData.Tot_Trains);
+                                for (int i = 0; i < len; i++) {
+                                    RowList.add(trainData.arr[i]);
+                                }
+                                mRecyclerView = findViewById(R.id.RecyclerView);
+                                mRecyclerView.setHasFixedSize(true);
+                                mLayoutManager = new LinearLayoutManager(Train_list_activity.this);
+                                mAdapter = new ItemAdapter(RowList);
+
+                                mRecyclerView.setLayoutManager(mLayoutManager);
+                                mRecyclerView.setAdapter(mAdapter);
+                                mTextView.setText(R.string.list_train);
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Train_Finder", "Fail " + error.toString());
+                            Toast.makeText(Train_list_activity.this, "Request Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
+            requestQueue.add(objectRequest);
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(Train_list_activity.this,"Request Failed",Toast.LENGTH_SHORT).show();
+            openpage1();
+        }
 
     }
     private void openpage1()
