@@ -8,6 +8,6 @@ This is an Android app which provides Train Details between two places.
 # Designed in
 * Adobe XD
 # Built With
-* Android Studio ( Using JAVA and XML )
+* Android Studio (Using JAVA)
 # Api Used
 * https://indianrailapi.com/api-collection
